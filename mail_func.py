@@ -14,7 +14,7 @@ def read_email():
 	type, data = mail.search(None, 'ALL')
 	#Checking if there are emails
 	if data[0] == '':
-		print("No email")
+#		print("No email")
 		subprocess.call(["/home/luan/mail/log.sh", "\"No email\""])
 		mail.close()
 		mail.logout()
@@ -37,7 +37,7 @@ def read_email():
 				msg = email.message_from_string(response_part[1])
 				mail_from = msg['from']
 				mail_sub = msg['subject']
-				#Getting only "FROM"
+				#Getting only "FROM" without the full name
 				aux = str(mail_from)
 				a = aux.split('<')
 				if a >= 0:
@@ -55,10 +55,11 @@ def read_email():
 				exit_code = subprocess.call(["/home/luan/mail/teste.sh", arg1, arg2])
 				#Checking if the shell script executed successful
 				if exit_code == 0:
-					print("Script executed successful")
+#					print("Script executed successful")
 				else:
-					print("Script failed")
+#					print("Script failed")
 					subprocess.call(["/home/luan/mail/log.sh", "\"Script failed\""])
+					exit()
 	#Delete emails
 	for i in range(last_id,first_id-1, -1):
 		typ, data = mail.fetch(i, '(RFC822)') 
