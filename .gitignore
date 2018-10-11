@@ -1,6 +1,7 @@
 *.pyc
 *~
 __pycahce__
-teste.sh
 teste.txt
 teste2.txt
+mail_func.py_10102018
+CHECK_EMAIL.log
